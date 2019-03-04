@@ -4,8 +4,7 @@ Title: Extract data from PamGene PamChip images
 Version: 0.1.0
 Author: Amel Bekkar 
 Maintainer: The package maintainer <amelbekkar@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Extract raw data signal from PamChip images 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
