@@ -3,7 +3,6 @@
 ---
 title: "PamgeneAnalyzeR"
 author: "Amel Bekkar"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{PamgeneAnalyzeR}
@@ -16,7 +15,7 @@ vignette: >
 ##Load example data
 
 We load here 12 PamGene PamChip raw images that are provided as examples of raw data.
-```{r , include=TRUE}
+```
 
 library(pamgeneAnalyzeR)
 library(tiff) # load tiff library to read tiff images 
@@ -60,7 +59,7 @@ plot_circles(centers.coords = cc, img = target, radius = 5)
 `regiter_one_image` function is used to align one image on the reference (target) image. The function will give as output the aligned image as well as the extracted signal from this image. If the layout of the chip (STK or PTK) is given it will be also added to the extracted signal. 
 
 
-```{r , include=TRUE, fig.align='center', message=FALSE, warning=FALSE}
+```
 
 STK_path = '../STK_Array_Layout.txt' # use your own PamChip layout path 
 STK.layout.file <- read.table(file = STK_path, header = TRUE, sep = '\t', quote = "")
@@ -72,7 +71,7 @@ tail(reg$signal)
 
 `check_registration` can be used to check the alignment by displaying the edges of the image on the target.
 
-```{r , include=TRUE, fig.align='center', message=FALSE, warning=FALSE, results='asis', fig.width = 7, fig.height = 7}
+```
 check_registration(source = readTIFF(source=paste(example_files_path,'/', example_files[2], sep = '')), target = target)
 ```
 
@@ -80,7 +79,7 @@ check_registration(source = readTIFF(source=paste(example_files_path,'/', exampl
 `registerAllImages` aligned all images in a directory on the reference, extract the signal fom them in the form of text files written in the chosen ouput directory. The process can be parralized to reduce time.
 Automatically aligns all the other images onto the chosen reference image and the signal of each spot of each image is extracted. Summary statistics of pixels brightness (mean, median, standard deviation and sum) are collected for each peptide spot, the left and right control point as well as 8 control background points.
 
-```{r , include=TRUE, fig.align='center', message=FALSE, warning=FALSE, eval=FALSE}
+```
 #Takes time
 registerAllImages(inDirectory = example_files_path, outDirectory = "outDir", target = target, centers.coords = cc, parallel.registration = TRUE, pamgene.layout.file = STK.layout.file)
 
@@ -90,7 +89,7 @@ registerAllImages(inDirectory = example_files_path, outDirectory = "outDir", tar
 ## Quality control image 
 As an assessment of the quality of the process, a synthetic image can be reconstructed from the extracted signal and compared to the original one to ensure that the pixel values where extracted correctly and no drift or shift is observable
 
-```{r, include=TRUE, fig.align='center', fig.width = 5, fig.height = 4}
+```
 plot_image_from_signal(reg$signal)
 ```
 
@@ -101,7 +100,7 @@ plot_image_from_signal(reg$signal)
 
 `ZpFactor_forAll` calculates the Z’-factor for the assay QC. Z’-factor values between 0.5 and 1 are considered excellent, values between 0 and 0.5 may be acceptable, and values less than 0 indicate the assay is unlikely to be usable, since positive and negative control readout overlap heavily in the readout, indicating that the chip for a given experiment has had some failure.
 
-```{r, include=TRUE, fig.align='center', eval=FALSE}
+```
 
 rawData <- mergeExperiments(path = "outDir/" )
 normData <- substractBackground(rawData = rawData)
