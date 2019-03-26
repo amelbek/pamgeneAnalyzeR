@@ -41,7 +41,7 @@ find_centers <- function(image, thresh = "99.7%"){
 
   centers <- get.centers(nblobs.denoised)
 
-  ## Use only the top left poit as reference for other points
+  ## Use only the top left point as reference for other points
   ## The other points are at constant distance fro this point
 
   # Get peptides Centers
