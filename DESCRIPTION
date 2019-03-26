@@ -8,12 +8,13 @@ Description: Extract raw data signal from PamChip images
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: imager,
-    dplyr,
-    foreach,
-    ggplot2,
-    RNiftyReg,
-    mmand
+Depends: R (>= 3.3.2)
+Imports: imager (>= 0.40.2),
+    dplyr (>= 0.7.6),
+    foreach (>= 1.4.4),
+    ggplot2 (>= 2.2.1),
+    RNiftyReg (>= 2.6.6),
+    mmand (>= 1.5.3)
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown
